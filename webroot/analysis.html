@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sentiment Analysis Tool</title>
+    <!-- <link rel="stylesheet" type="text/css" href="http://bootswatch.com/yeti/bootstrap.min.css"> -->
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="css/datatables.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery.dynatable.css"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-select.min.css"/>
+    <link rel="icon" type="image/png" sizes="96x96" href="image/favicon-96x96.png">
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Menu</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html"><i class="fa fa-facebook-square"></i> Sentiment Analysis Tool</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+
+<div class="container">
+
+    <div class="row">
+        <div class="jumbotron">
+
+            <div class="row">
+
+                <div class="col-md-2">
+                    <img id="profile-pic" src="" width="100" height="100">
+                </div>
+
+                <div class="col-md-10">
+                    <h1 id="profile-name">...</h1>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <h1>Overall Sentiment</h1>
+
+        <div class="col-md-6">
+            <svg id="svg-polarity-piechart"></svg>
+        </div>
+        <div class="col-md-6">
+            <table id="table-polarity" class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Polarity</th>
+                    <th class="text-right">Percentage</th>
+                    <th class="text-right">Count</th>
+                </tr>
+                </thead>
+                <tbody></tbody>
+                <tfoot>
+                <tr>
+                    <td>Total</td>
+                    <td class="text-right"></td>
+                    <td class="text-right"></td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+    <div class="row">
+        <h1>Sentiment Comparison</h1>
+
+        <div class="pull-right">
+            <label for="select-profile">Compare With: </label>
+            <select id="select-profile" class="selectpicker" title="Select Profile" data-live-search="true">
+            </select>
+        </div>
+
+        <div class="col-md-12">
+            <svg id="svg-polarity-barchart"></svg>
+        </div>
+    </div>
+
+    <div class="row">
+        <h1>Sentiment of Comments</h1>
+
+        <div class="row container">
+            <div id="sentiment-comments">
+
+                <table id="table-comments" class="table table-striped table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Comment</th>
+                        <th>Polarity</th>
+                        <th>Score</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<script type="text/html" id="template">
+    <tr>
+        <td data-content="name"></td>
+        <td data-content="comment"></td>
+        <td class="cell-center"><span class="label" data-class="css" data-content="polarity"></span></td>
+        <td class="cell-center"><span class="label" data-class="css" data-content="score"></span></td>
+        <td class="cell-center"><a data-template-bind='[{"attribute": "data-index", "value": "index"}]'
+                                   class="view-details-link btn btn-info btn-block">View Details</a></td>
+    </tr>
+</script>
+
+<script type="text/html" id="template-filter-btn">
+    <div id="btn-polarity" class="btn-group">
+        <button type="button" class="btn btn-success">Positive</button>
+        <button type="button" class="btn btn-warning">Negative</button>
+        <button type="button" class="btn btn-primary">Neutral</button>
+        <button type="button" class="btn btn-default">All</button>
+    </div>
+</script>
+
+<script type="text/html" id="template-select">
+    <option data-content="name" data-template-bind='[{"attribute": "value", "value": "id"}]'></option>
+</script>
+
+<script type="text/html" id="template-modal">
+    <div class="row">
+    </div>
+
+    <div class="panel panel-info">
+        <div class="panel-heading">Facebook Post</div>
+        <div id="mainpost" class="panel-body">No main post to display.
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Theme</div>
+        <div class="panel-body">
+            <table id="theme" class="table">
+                <thead>
+                <th>Theme</th>
+                <th class="col-md-3">Sentiment</th>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Category</div>
+        <div class="panel-body">
+            <table id="category" class="table">
+                <thead>
+                <th>Topic</th>
+                <th class="col-md-3">Strength Score</th>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Entity</div>
+        <div class="panel-body">
+            <table id="entity" class="table">
+                <thead>
+                <th>Entity</th>
+                <th class="col-md-3">Sentiment</th>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</script>
+
+
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+<script type="text/javascript" src="js/jquery.loadTemplate-1.5.0.min.js"></script>
+<script type="text/javascript" src="js/data.js"></script>
+<script type="text/javascript" src="js/datatables.min.js"></script>
+<script type="text/javascript" src="js/bootbox.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-select.min.js"></script>
+<script type="text/javascript" src="js/jquery.dynatable.js"></script>
+<script type="text/javascript" src="js/analysis.js"></script>
+
+
+</body>
+
+</html>

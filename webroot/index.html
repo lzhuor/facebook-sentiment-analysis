@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sentiment Analysis Tool</title>
+  <!-- <link rel="stylesheet" type="text/css" href="http://bootswatch.com/yeti/bootstrap.min.css"> -->
+  <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/r/bs/jszip-2.5.0,pdfmake-0.1.18,dt-1.10.9,b-1.0.3,b-colvis-1.0.3,b-html5-1.0.3/datatables.min.css"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="icon" type="image/png" sizes="96x96" href="image/favicon-96x96.png">
+</head>
+
+<body>
+
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Menu</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#"><i class="fa fa-facebook-square"></i> Sentiment Analysis Tool</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+
+  <div class="container">
+
+    <div class="row">
+      <div class="jumbotron">
+        <form class="form" id="form-url">
+          <div class="form-group form-group-lg">
+            <label class="sr-only" for="input-url">Facebook Page Link</label>
+            <div class="input-group">
+              <div class="input-group-addon"><span class="glyphicon glyphicon-link"></span></div>
+              <input type="text" class="form-control" id="input-url" placeholder="Paste facebook profile page link" autocomplete="off">
+              <div class="input-group-btn"><button type="submit" class="btn btn-primary btn-lg">Go!</button></div>
+            </div>
+          </div>
+        </form>
+    </div>
+    </div>
+
+    <div class="row">
+      <div id="section-extractions">
+        <table id="table-extractions" class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <th class="col-md-1"> </th>
+            <th class="col-md-2">Profile</th>
+            <th class="col-md-7">Description</th>
+            <th class="col-md-2">Analysis Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+        </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <script type="text/html" id="template">
+    <tr>
+      <td style="width:100px; height:100px;">
+        <div class="thumbnail">
+          <img data-src="picture.data.url" width="100" height="100"> 
+        </div>
+      </td>
+      <td data-content="name"></td>
+      <td data-content="about"></td>
+      <td><div data-template-bind='[{"attribute": "data-id", "value": "id"}]' data-content="status" data-format="StatusFormatter"></div></td>
+    </tr>
+  </script>
+
+    <script type="text/html" id="template-filter-btn">
+    <div id="btn-status" class="btn-group">
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Filter by <span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <li><a href="#"><span class="glyphicon glyphicon-asterisk"></span> All</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-cloud-download"></span> Pulling...</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-arrow-right"></span> Analyze</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-hourglass"></span> Analyzing...</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-signal"></span> View Analysis</a></li>
+      </ul>
+    </div>
+  </script>
+
+  <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+  <script type="text/javascript" src="js/jquery.loadTemplate-1.5.0.min.js"></script>
+  <script type="text/javascript" src="js/data.js"></script>
+  <script type="text/javascript" src="js/datatables.min.js"></script>
+  <script type="text/javascript" src="js/index.js"></script> 
+
+</body>
+
+</html>

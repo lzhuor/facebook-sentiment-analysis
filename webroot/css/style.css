@@ -1,0 +1,223 @@
+.bar {
+    padding: 5px;
+    margin: 5px;
+    border: 1px solid;
+}
+
+.success {
+    background-color: #43ac6a;
+    border-color: #3c9a5f;
+    color: #ffffff;
+}
+
+.info {
+    background-color: #5bc0de;
+    border-color: #3db5d8;
+    color: #ffffff;
+}
+
+.primary {
+    background-color: #1f77b4;
+    border-color: #1F63B4;
+    color: #ffffff;
+}
+
+.warning {
+    background-color: #e99002;
+    border-color: #d08002;
+    color: #ffffff;
+}
+
+.danger {
+    background-color: #f04124;
+    border-color: #ea2f10;
+    color: #ffffff;
+}
+
+.default {
+    background-color: #cecece;
+    border-color: #adadad;
+    color: #333333;
+}
+
+.row {
+    margin-bottom: 30px;
+}
+
+.row h1 {
+    margin-bottom: 15px;
+}
+
+svg {
+    width: 100%;
+    height: 450px;
+    /*
+    background-color: #fff;
+    border: 1px solid;
+    border-color: #d3d3d3;
+    */
+
+    color: #333333;
+}
+
+svg .bar {
+    stroke-width: 1;
+    cursor: default;
+}
+
+svg .bar-text {
+    fill: #ffffff;
+    font-size: 13px;
+}
+
+svg .success {
+    fill: #43ac6a;
+    stroke: #3c9a5f;
+}
+
+svg .info {
+    fill: #5bc0de;
+    stroke: #3db5d8;
+}
+
+svg .primary {
+    fill: #1f77b4;
+    stroke: #1F63B4;
+}
+
+svg .warning {
+    fill: #e99002;
+    stroke: #d08002;
+}
+
+svg .danger {
+    fill: #f04124;
+    stroke: #ea2f10;
+}
+
+svg .default {
+    fill: #cecece;
+    stroke: #adadad;
+}
+
+svg .axis text {
+    font: 15px sans-serif;
+}
+
+svg .axis path, svg .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+svg .slice {
+    cursor: pointer;
+}
+
+svg .pie-center-text {
+    font-size: 28px;
+}
+
+svg .slice .slice-text {
+    font-size: 13px;
+    fill: #fff;
+}
+
+table tbody tr td.clickable {
+    cursor: pointer;
+}
+
+table tbody tr td.clickable:hover {
+    text-decoration: underline;
+}
+
+table tfoot tr {
+    font-weight: bold;
+    background-color: #efefef;
+    font-style: italic;
+}
+
+.label {
+    font-size: 13px;
+}
+
+#regions-list .label {
+    cursor: pointer;
+}
+
+#countries-list div {
+    margin: 3px 0;
+    cursor: pointer;
+}
+
+#map-canvas {
+    width: 100%;
+    height: 400px;
+}
+
+.stations, .stations svg {
+    position: absolute;
+}
+
+.stations svg {
+    width: 60px;
+    height: 20px;
+    padding-right: 100px;
+    font: 10px sans-serif;
+}
+
+.stations circle {
+    stroke: black;
+    stroke-width: 1.5px;
+}
+
+#table-polarity {
+    margin-top: 22%;
+}
+
+.dataTables_paginate a {
+    cursor: pointer;
+    padding: 10px;
+}
+
+.dataTables_info {
+    color: #ccc;
+}
+
+#btn-polarity {
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+.cell-center {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.navbar-brand {
+    color: #3b5998 !important;
+}
+
+.container {
+    margin-top: 100px;
+}
+
+#table-extractions th, #table-extractions td {
+    vertical-align: middle;
+}
+
+#table-extractions th:nth-child(4), #table-extractions td:nth-child(4) {
+    text-align: center;
+}
+
+.modal-backdrop {
+    z-index: -1;
+}
+
+.modal-dialog label-text {
+    color: black;
+}
+
+.bootstrap-select {
+    margin-right: 30px;
+}
