@@ -1,3 +1,3 @@
 # facebook-page-language-analysis
 
-This is one of my college project written in VertX Java. 
+John wrote this sentiment analysis tool using a Semetria NLP engine. The web server is impletement in VertX Async framework. Database is powered by MongoDB to store Facebook Graph API results.
