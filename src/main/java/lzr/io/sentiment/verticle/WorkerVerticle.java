@@ -46,8 +46,8 @@ public class WorkerVerticle extends AbstractVerticle {
                 System.out.println("[Worker] Consuming data in " + Thread.currentThread().getName());
                 String userId = (String) message.body();
                 // Use correct Semantria API credentias here
-                String key = "36f7fc62-b344-4e42-9b05-a6f6514265ef";
-                String secret = "3dc2a3d6-2732-44bf-8cd0-17511674f94b";
+                String key = "*"; // TODO: Use your own key
+                String secret = "*"; // TODO: Use your own secret
 
                 Hashtable<String, TaskStatus> docsTracker = new Hashtable<String, TaskStatus>();
                 List<JsonObject> initialPosts = new ArrayList<JsonObject>();
