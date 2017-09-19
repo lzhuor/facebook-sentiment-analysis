@@ -1,7 +1,7 @@
 {
   "http.port" : 8082,
   "http.timeout" : 10000,
-  "facebook.graph.API.token" : "522512244562831|2ksx2nB-zMIrHDcBxU_xXYOyeI8",
+  "facebook.graph.API.token" : "***********",
   "facebook.graph.API.host" : "graph.facebook.com",
   "mongodb.server.connection.url" : "mongodb://localhost:27017",
   "mongodb.sentiment.db" : "sentiment"
